@@ -1,9 +1,5 @@
 # Repo Health Audit Pipeline
 
-This directory documents the analysis pipeline used to produce
-Repo Health Audit findings.
+This directory contains the analysis stages used to evaluate repository health.
 
-This is not a runtime system.
-This is an audit methodology backed by scripts and evidence.
-
-See PIPELINE_OVERVIEW.md for structure.
+Each stage produces evidence that feeds the final audit output.
