@@ -1,50 +1,70 @@
 # Repo Health Audit Pipeline
 
 This pipeline analyzes how a repository evolves over time to surface
-risk, decay, and ownership gaps before incidents occur.
+design risk, decay, and ownership gaps.
 
-## Pipeline Stages
+## 1. Inventory & Baseline
+Purpose: Establish what exists and how it has changed.
 
-### 1. Inventory & Change Detection
-- What exists?
-- What changed recently?
-- What hasn’t changed in too long?
+Scripts:
+- triage_scan.py
+- cherry_pick_filter.py
 
-Inputs:
-- Repository file tree
-- Commit timestamps
-- File metadata
+Outputs:
+- Full artifact inventory
+- Change frequency
+- Last-modified timelines
 
 ---
 
-### 2. Risk Signal Extraction
-- Stale but critical files
-- High-churn sensitive areas
-- Orphaned logic (no clear owner)
+## 2. Change & Churn Analysis
+Purpose: Identify where risk concentrates through repeated change.
+
+Scripts:
+- triage_group_by_date.py
+- triage_heatmap.py
+
+Outputs:
+- Change clustering
+- Hot paths vs ignored paths
 - Silent risk accumulation
 
 ---
 
-### 3. Narrative Grouping
-- Group findings by *why they matter*
-- Translate signals into human-readable risk stories
-- No alerts. No dashboards. Just evidence.
+## 3. Narrative Extraction
+Purpose: Convert raw signals into human-readable risk narratives.
+
+Scripts:
+- swbst_extractor.py
+- cow_extractor.py
+- backlog_ticket_generator.py
+
+Outputs:
+- Risk stories
+- Refactor / archive candidates
+- “Do not ship” indicators
 
 ---
 
-### 4. Findings Output
-- Ranked risks
-- “Do not ship” warnings
-- Refactor / archive recommendations
-- Executive-readable summary
+## 4. Agent & Automation Health (Optional Module)
+Purpose: Assess automation reliability and governance drift.
+
+Scripts:
+- agent_check.py
+- agent_launcher.py
+- auto_monitor.py
+
+Outputs:
+- Agent health signals
+- Automation fragility warnings
+- Governance gaps
 
 ---
 
-## What This Is Not
-- Not a scanner
-- Not a linter
-- Not an agent framework
-- Not runtime monitoring
+## 5. Audit Findings
+Purpose: Produce evidence leaders can act on.
 
-This is **design accountability**, extracted from history.
-
+Outputs:
+- Ranked findings
+- Ownership gaps
+- Structural risk summaries
