@@ -1,0 +1,13 @@
+# Repo Health Audit — local outputs only
+*_output.json
+*_candidates.json
+*_heatmap.json
+example_backlog_tickets.json
+
+# Python noise
+__pycache__/
+*.pyc
+
+# OS/editor junk
+.DS_Store
+.vscode/
